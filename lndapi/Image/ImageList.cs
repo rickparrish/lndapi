@@ -24,7 +24,6 @@ namespace lndapi
 
 namespace lndapi.Image
 {
-    // TODO region should be optional
     public class ImageListRequestModel : BaseRequestModel
     {
         public string region { get; set; }

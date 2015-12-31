@@ -12,23 +12,13 @@ namespace lndapi
     {
         public async Task<ImageDetailsDetails> ImageDetailsAsync(int imageId)
         {
-            return (await RequestAsync<ImageDetailsResponseModel>("image", "details", new ImageDetailsRequestModel(imageId))).details;
+            return (await RequestAsync<ImageDetailsResponseModel>("image", "details", new ImageBaseRequestModel(imageId))).details;
         }
     }
 }
 
 namespace lndapi.Image
 {
-    public class ImageDetailsRequestModel : BaseRequestModel
-    {
-        public int image_id { get; set; }
-
-        public ImageDetailsRequestModel(int imageId)
-        {
-            this.image_id = imageId;
-        }
-    }
-
     public class ImageDetailsResponseModel : BaseResponseModel
     {
         /*

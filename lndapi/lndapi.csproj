@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\Base.cs" />
+    <Compile Include="Image\Base.cs" />
     <Compile Include="Region\RegionList.cs" />
     <Compile Include="Plan\PlanList.cs" />
     <Compile Include="SecurityGroup\SecurityGroupList.cs" />

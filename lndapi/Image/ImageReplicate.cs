@@ -19,14 +19,12 @@ namespace lndapi
 
 namespace lndapi.Image
 {
-    public class ImageReplicateRequestModel : BaseRequestModel
+    public class ImageReplicateRequestModel : ImageBaseRequestModel
     {
-        public int image_id { get; set; }
         public string region { get; set; }
 
-        public ImageReplicateRequestModel(int imageId, string region)
+        public ImageReplicateRequestModel(int imageId, string region) : base(imageId)
         {
-            this.image_id = imageId;
             this.region = region;
         }
     }

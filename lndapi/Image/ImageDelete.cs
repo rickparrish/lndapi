@@ -10,30 +10,10 @@ namespace lndapi
 {
     public partial class LNDynamic
     {
+        // NOTE: Returns success=yes whether the image existed or not
         public async Task ImageDeleteAsync(int imageId)
         {
-            await RequestAsync<ImageDeleteResponseModel>("image", "delete", new ImageDeleteRequestModel(imageId));
+            await RequestAsync<BaseResponseModel>("image", "delete", new ImageBaseRequestModel(imageId));
         }
-    }
-}
-
-namespace lndapi.Image
-{
-    public class ImageDeleteRequestModel : BaseRequestModel
-    {
-        public int image_id { get; set; }
-
-        public ImageDeleteRequestModel(int imageId)
-        {
-            this.image_id = imageId;
-        }
-    }
-
-    public class ImageDeleteResponseModel : BaseResponseModel
-    {
-        /*
-        {"success":"yes"}
-        NOTE: Seems to return this message whether the image existed or not
-        */
     }
 }
