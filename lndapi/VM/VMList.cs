@@ -22,10 +22,8 @@ namespace lndapi.VM
 {
     public class VMListRequestModel : BaseRequestModel
     {
-        public VMListRequestModel(BaseRequestModel brm)
+        public VMListRequestModel(BaseRequestModel brm) : base(brm)
         {
-            this.api_id = brm.api_id;
-            this.api_key = brm.api_key;
         }
 
         public override string ToString()

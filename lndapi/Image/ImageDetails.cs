@@ -24,10 +24,8 @@ namespace lndapi.Image
     {
         public int image_id { get; set; }
 
-        public ImageDetailsRequestModel(BaseRequestModel brm, int imageId)
+        public ImageDetailsRequestModel(BaseRequestModel brm, int imageId) : base(brm)
         {
-            this.api_id = brm.api_id;
-            this.api_key = brm.api_key;
             this.image_id = imageId;
         }
 

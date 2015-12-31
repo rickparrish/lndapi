@@ -26,10 +26,8 @@ namespace lndapi.VM
         public int vm_id { get; set; }
         public string name { get; set; }
 
-        public VMSnapshotRequestModel(BaseRequestModel brm, int vmId, string name)
+        public VMSnapshotRequestModel(BaseRequestModel brm, int vmId, string name) : base(brm)
         {
-            this.api_id = brm.api_id;
-            this.api_key = brm.api_key;
             this.vm_id = vmId;
             this.name = name;
         }

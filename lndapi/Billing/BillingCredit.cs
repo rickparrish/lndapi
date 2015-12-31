@@ -22,10 +22,8 @@ namespace lndapi.VM
 {
     public class BillingCreditRequestModel : BaseRequestModel
     {
-        public BillingCreditRequestModel(BaseRequestModel brm)
+        public BillingCreditRequestModel(BaseRequestModel brm) : base(brm)
         {
-            this.api_id = brm.api_id;
-            this.api_key = brm.api_key;
         }
 
         public override string ToString()

@@ -23,10 +23,8 @@ namespace lndapi.VM
     {
         public int vm_id { get; set; }
 
-        public VMStartRequestModel(BaseRequestModel brm, int vmId)
+        public VMStartRequestModel(BaseRequestModel brm, int vmId) : base(brm)
         {
-            this.api_id = brm.api_id;
-            this.api_key = brm.api_key;
             this.vm_id = vmId;
         }
 

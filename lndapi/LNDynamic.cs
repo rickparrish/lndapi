@@ -2,8 +2,10 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +21,8 @@ namespace lndapi
     public partial class LNDynamic : IDisposable
     {
         public const string BASE_URL_LEGACY = "https://dynamic.lunanode.com/api.php";
+        public const string DYNAMIC_URL = "https://dynamic.lunanode.com/api/{CATEGORY}/{ACTION}/";
+        private string _APIKey = null;
         private BaseRequestModel _BRM = null;
 
         public LNDynamic(string apiId, string apiKey)
@@ -26,10 +30,11 @@ namespace lndapi
             if (apiId.Length != 16) throw new ArgumentException("supplied apiId incorrect length, must be 16", apiId);
             if (apiKey.Length != 128) throw new ArgumentException("supplied apiKey incorrect length, must be 128", apiKey);
 
+            _APIKey = apiKey;
             _BRM = new BaseRequestModel()
             {
                 api_id = apiId,
-                api_key = apiKey
+                api_partialkey = apiKey
             };
         }
 
@@ -40,8 +45,21 @@ namespace lndapi
             {
                 WC.Proxy = null;
 
-                Uri RequestUrl = new Uri($"{BASE_URL_LEGACY}?category={category}&action={action}&{requestModel.ToString()}");
-                string ResponseText = await WC.DownloadStringTaskAsync(RequestUrl);
+                //Uri RequestUrl = new Uri($"{BASE_URL_LEGACY}?category={category}&action={action}&{requestModel.ToString()}");
+                //string ResponseText = await WC.DownloadStringTaskAsync(RequestUrl);
+
+                string ModelData = JsonConvert.SerializeObject(requestModel);
+                int Nonce = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds; // https://dzone.com/articles/get-unix-epoch-time-one-line-c
+                string Signature = hash_hmac("sha512", $"{category}/{action}/|{ModelData}|{Nonce.ToString()}", _APIKey);
+                NameValueCollection RequestData = new NameValueCollection()
+                {
+                    { "req", ModelData },
+                    { "signature", Signature },
+                    { "nonce", Nonce.ToString() }
+                };
+
+                Uri RequestUrl = new Uri(DYNAMIC_URL.Replace("{CATEGORY}", category).Replace("{ACTION}", action));
+                string ResponseText = Encoding.UTF8.GetString(await WC.UploadValuesTaskAsync(RequestUrl, "POST", RequestData));
 
                 BaseResponseModel BRM = JsonConvert.DeserializeObject<BaseResponseModel>(ResponseText);
                 if (BRM.success == "yes")
@@ -53,6 +71,25 @@ namespace lndapi
                     throw new LNDException(BRM.error);
                 }
             }
+        }
+
+        // http://stackoverflow.com/a/12804391/342378
+        // TODO algo is ignored
+        private string hash_hmac(string algo, string data, string key)
+        {
+            var keyByte = Encoding.UTF8.GetBytes(key);
+            using (var hmacsha512 = new HMACSHA512(keyByte))
+            {
+                hmacsha512.ComputeHash(Encoding.UTF8.GetBytes(data));
+                return ByteToString(hmacsha512.Hash).ToLower();
+            }
+        }
+        private string ByteToString(byte[] buff)
+        {
+            string sbinary = "";
+            for (int i = 0; i < buff.Length; i++)
+                sbinary += buff[i].ToString("X2"); /* hex format */
+            return sbinary;
         }
 
         #region IDisposable Support

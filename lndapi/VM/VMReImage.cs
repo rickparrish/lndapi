@@ -24,10 +24,8 @@ namespace lndapi.VM
         public int vm_id { get; set; }
         public int image_id { get; set; }
 
-        public VMReImageRequestModel(BaseRequestModel brm, int vmId, int imageId)
+        public VMReImageRequestModel(BaseRequestModel brm, int vmId, int imageId) : base(brm)
         {
-            this.api_id = brm.api_id;
-            this.api_key = brm.api_key;
             this.vm_id = vmId;
             this.image_id = imageId;
         }

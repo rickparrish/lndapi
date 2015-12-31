@@ -29,10 +29,8 @@ namespace lndapi.Image
         public string format { get; set; }
         public string virtio { get; set; }
 
-        public ImageFetchRequestModel(BaseRequestModel brm, string region, string name, string location, string format, string virtio)
+        public ImageFetchRequestModel(BaseRequestModel brm, string region, string name, string location, string format, string virtio) : base(brm)
         {
-            this.api_id = brm.api_id;
-            this.api_key = brm.api_key;
             this.region = region;
             this.name = name;
             this.location = location;

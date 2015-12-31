@@ -29,17 +29,13 @@ namespace lndapi.Image
     {
         public string region { get; set; }
 
-        public ImageListRequestModel(BaseRequestModel brm)
+        public ImageListRequestModel(BaseRequestModel brm) : base(brm)
         {
-            this.api_id = brm.api_id;
-            this.api_key = brm.api_key;
             this.region = null;
         }
 
-        public ImageListRequestModel(BaseRequestModel brm, string region)
+        public ImageListRequestModel(BaseRequestModel brm, string region) : base(brm)
         {
-            this.api_id = brm.api_id;
-            this.api_key = brm.api_key;
             this.region = region;
         }
 

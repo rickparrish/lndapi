@@ -22,10 +22,8 @@ namespace lndapi.VM
 {
     public class ScriptListRequestModel : BaseRequestModel
     {
-        public ScriptListRequestModel(BaseRequestModel brm)
+        public ScriptListRequestModel(BaseRequestModel brm) : base(brm)
         {
-            this.api_id = brm.api_id;
-            this.api_key = brm.api_key;
         }
 
         public override string ToString()

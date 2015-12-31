@@ -25,10 +25,8 @@ namespace lndapi.Image
         public int image_id { get; set; }
         public string region { get; set; }
 
-        public ImageReplicateRequestModel(BaseRequestModel brm, int imageId, string region)
+        public ImageReplicateRequestModel(BaseRequestModel brm, int imageId, string region) : base(brm)
         {
-            this.api_id = brm.api_id;
-            this.api_key = brm.api_key;
             this.image_id = imageId;
             this.region = region;
         }

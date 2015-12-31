@@ -23,10 +23,8 @@ namespace lndapi.VM
 {
     public class RegionListRequestModel : BaseRequestModel
     {
-        public RegionListRequestModel(BaseRequestModel brm)
+        public RegionListRequestModel(BaseRequestModel brm) : base(brm)
         {
-            this.api_id = brm.api_id;
-            this.api_key = brm.api_key;
         }
 
         public override string ToString()

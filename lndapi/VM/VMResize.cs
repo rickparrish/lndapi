@@ -28,10 +28,8 @@ namespace lndapi.VM
         public int vm_id { get; set; }
         public int plan_id { get; set; }
 
-        public VMResizeRequestModel(BaseRequestModel brm, int vmId, int planId)
+        public VMResizeRequestModel(BaseRequestModel brm, int vmId, int planId) : base(brm)
         {
-            this.api_id = brm.api_id;
-            this.api_key = brm.api_key;
             this.vm_id = vmId;
             this.plan_id = planId;
         }
