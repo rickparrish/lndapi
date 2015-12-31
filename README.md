@@ -13,6 +13,7 @@ Their service includes an API that can be used to automate parts of the control 
 <strong>vm</strong>: start, stop, reboot, info, delete, reimage, resize, rescue, vnc, snapshot, list<br />
 <strong>dns</strong>: list<br />
 <strong>image</strong>: list, delete, details, replicate, fetch, retrieve<br />
+<strong>volume</strong>: list<br />
 virtual <strong>network</strong>: list<br />
 <strong>plan</strong>: list<br />
 <strong>region</strong>: list<br />
@@ -24,7 +25,7 @@ startup <strong>script</strong>: list<br />
 
 <strong>vm</strong>: diskswap, floatingip-add, floatingip-delete, create<br />
 <strong>dns</strong>: set, zone-list, zone-add, zone-remove, record-list, record-add, record-remove, dyn-list, dyn-add, dyn-update, dyn-remove<br />
-<strong>volume</strong>: list, create, delete, attach, detach, info<br />
+<strong>volume</strong>: create, delete, attach, detach, info<br />
 <strong>floating</strong> ip: list, add, delete<br />
 virtual <strong>network</strong>: create, delete<br />
 <strong>lb</strong> (load balancer): list, create, delete, info, member_add, member_remove, associate<br />

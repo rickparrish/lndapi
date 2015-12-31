@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Base\Base.cs" />
     <Compile Include="Image\Base.cs" />
+    <Compile Include="Volume\List.cs" />
     <Compile Include="Network\List.cs" />
     <Compile Include="DNS\List.cs" />
     <Compile Include="Region\List.cs" />
