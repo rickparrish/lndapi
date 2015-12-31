@@ -47,6 +47,7 @@
     <Compile Include="Base\Base.cs" />
     <Compile Include="Image\Base.cs" />
     <Compile Include="Floating\List.cs" />
+    <Compile Include="LoadBalancer\Delete.cs" />
     <Compile Include="LoadBalancer\List.cs" />
     <Compile Include="Volume\List.cs" />
     <Compile Include="Network\List.cs" />

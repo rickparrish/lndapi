@@ -16,7 +16,7 @@ Their service includes an API that can be used to automate parts of the control 
 <strong>volume</strong>: list<br />
 <strong>floating</strong> ip: list<br />
 virtual <strong>network</strong>: list<br />
-<strong>lb</strong> (load balancer): list<br />
+<strong>lb</strong> (load balancer): list, delete<br />
 <strong>plan</strong>: list<br />
 <strong>region</strong>: list<br />
 <strong>securitygroup</strong>: list<br />
@@ -30,6 +30,6 @@ startup <strong>script</strong>: list<br />
 <strong>volume</strong>: create, delete, attach, detach, info<br />
 <strong>floating</strong> ip: add, delete<br />
 virtual <strong>network</strong>: create, delete<br />
-<strong>lb</strong> (load balancer): create, delete, info, member_add, member_remove, associate<br />
+<strong>lb</strong> (load balancer): create, info, member_add, member_remove, associate<br />
 server <strong>monitor</strong>: check-list, check-types, check-add, check-remove, contact-list, contact-add, contact-remove, alert-list, alert-add, alert-remove<br />
 
