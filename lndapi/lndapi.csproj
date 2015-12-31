@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\Base.cs" />
+    <Compile Include="SecurityGroup\SecurityGroupList.cs" />
+    <Compile Include="Script\ScriptList.cs" />
+    <Compile Include="Billing\BillingCredit.cs" />
     <Compile Include="Image\ImageDelete.cs" />
     <Compile Include="Image\ImageFetch.cs" />
     <Compile Include="Image\ImageReplicate.cs" />
