@@ -49,6 +49,7 @@
     <Compile Include="Floating\List.cs" />
     <Compile Include="LoadBalancer\Delete.cs" />
     <Compile Include="LoadBalancer\List.cs" />
+    <Compile Include="Network\Delete.cs" />
     <Compile Include="Volume\List.cs" />
     <Compile Include="Network\List.cs" />
     <Compile Include="DNS\List.cs" />

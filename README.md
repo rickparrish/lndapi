@@ -6,7 +6,7 @@ See https://dynamic.lunanode.com/info.php?r=2427 for more info (aff. link)
 
 Their service includes an API that can be used to automate parts of the control panel, which is pretty easy to use, but lndapi makes it even easier!
 
-<strong>This is still in the early stages of development, so only a small subset of the API has been implemented so far. The rest is in the works...</strong>
+<strong>This is still in the early stages of development, so while I've tested every method as I've added them, there could still be bugs and edge cases to work out.</strong>
 
 # Supported Actions
 
@@ -15,7 +15,7 @@ Their service includes an API that can be used to automate parts of the control 
 <strong>image</strong>: list, delete, details, replicate, fetch, retrieve<br />
 <strong>volume</strong>: list<br />
 <strong>floating</strong> ip: list<br />
-virtual <strong>network</strong>: list<br />
+virtual <strong>network</strong>: list, delete<br />
 <strong>lb</strong> (load balancer): list, delete<br />
 <strong>plan</strong>: list<br />
 <strong>region</strong>: list<br />
@@ -29,7 +29,7 @@ startup <strong>script</strong>: list<br />
 <strong>dns</strong>: set, zone-list, zone-add, zone-remove, record-list, record-add, record-remove, dyn-list, dyn-add, dyn-update, dyn-remove<br />
 <strong>volume</strong>: create, delete, attach, detach, info<br />
 <strong>floating</strong> ip: add, delete<br />
-virtual <strong>network</strong>: create, delete<br />
+virtual <strong>network</strong>: create<br />
 <strong>lb</strong> (load balancer): create, info, member_add, member_remove, associate<br />
 server <strong>monitor</strong>: check-list, check-types, check-add, check-remove, contact-list, contact-add, contact-remove, alert-list, alert-add, alert-remove<br />
 
