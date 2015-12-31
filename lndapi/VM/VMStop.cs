@@ -12,31 +12,7 @@ namespace lndapi
     {
         public async Task VMStopAsync(int vmId)
         {
-            await RequestAsync<VMStopResponseModel>("vm", "stop", new VMStopRequestModel(vmId));
+            await RequestAsync<BaseResponseModel>("vm", "stop", new VMBaseRequestModel(vmId));
         }
-    }
-}
-
-namespace lndapi.VM
-{
-    public class VMStopRequestModel : BaseRequestModel
-    {
-        public int vm_id { get; set; }
-
-        public VMStopRequestModel(int vmId)
-        {
-            this.vm_id = vmId;
-        }
-    }
-
-    public class VMStopResponseModel : BaseResponseModel
-    {
-        /*
-        {"success":"no","error":"invalid vm"}
-        or
-        {"success":"no","error":"ERROR (CommandError): Unable to stop the specified server(s)."}
-        or
-        {"success":"yes"}
-        */
     }
 }

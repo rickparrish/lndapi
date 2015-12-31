@@ -12,24 +12,13 @@ namespace lndapi
     {
         public async Task<string> VMVNCAsync(int vmId)
         {
-            var Result = await RequestAsync<VMVNCResponseModel>("vm", "vnc", new VMVNCRequestModel(vmId));
-            return Result.vnc_url;
+            return (await RequestAsync<VMVNCResponseModel>("vm", "vnc", new VMBaseRequestModel(vmId))).vnc_url;
         }
     }
 }
 
 namespace lndapi.VM
 {
-    public class VMVNCRequestModel : BaseRequestModel
-    {
-        public int vm_id { get; set; }
-
-        public VMVNCRequestModel(int vmId)
-        {
-            this.vm_id = vmId;
-        }
-    }
-
     public class VMVNCResponseModel : BaseResponseModel
     {
         /*

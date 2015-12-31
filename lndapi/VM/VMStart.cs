@@ -12,31 +12,7 @@ namespace lndapi
     {
         public async Task VMStartAsync(int vmId)
         {
-            await RequestAsync<VMStartResponseModel>("vm", "start", new VMStartRequestModel(vmId));
+            await RequestAsync<BaseResponseModel>("vm", "start", new VMBaseRequestModel(vmId));
         }
-    }
-}
-
-namespace lndapi.VM
-{
-    public class VMStartRequestModel : BaseRequestModel
-    {
-        public int vm_id { get; set; }
-
-        public VMStartRequestModel(int vmId) 
-        {
-            this.vm_id = vmId;
-        }
-    }
-
-    public class VMStartResponseModel : BaseResponseModel
-    {
-        /*
-        {"success":"no","error":"invalid vm"}
-        or
-        {"success":"no","error":"ERROR (CommandError): Unable to start the specified server(s)."}
-        or
-        {"success":"yes"}
-        */
     }
 }

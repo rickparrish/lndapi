@@ -12,8 +12,7 @@ namespace lndapi
     {
         public async Task<PlanListPlans[]> PlanListAsync()
         {
-            var Result = await RequestAsync<PlanListResponseModel>("plan", "list", new BaseRequestModel());
-            return Result.plans;
+            return (await RequestAsync<PlanListResponseModel>("plan", "list", new BaseRequestModel())).plans;
         }
     }
 }

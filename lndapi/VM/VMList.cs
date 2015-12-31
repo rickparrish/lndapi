@@ -12,8 +12,7 @@ namespace lndapi
     {
         public async Task<VMListVMs[]> VMListAsync()
         {
-            var Result = await RequestAsync<VMListResponseModel>("vm", "list", new BaseRequestModel());
-            return Result.vms;
+            return (await RequestAsync<VMListResponseModel>("vm", "list", new BaseRequestModel())).vms;
         }
     }
 }

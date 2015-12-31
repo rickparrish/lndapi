@@ -12,31 +12,7 @@ namespace lndapi
     {
         public async Task VMRescueAsync(int vmId)
         {
-            await RequestAsync<VMRescueResponseModel>("vm", "rescue", new VMRescueRequestModel(vmId));
+            await RequestAsync<BaseResponseModel>("vm", "rescue", new VMBaseRequestModel(vmId));
         }
-    }
-}
-
-namespace lndapi.VM
-{
-    public class VMRescueRequestModel : BaseRequestModel
-    {
-        public int vm_id { get; set; }
-
-        public VMRescueRequestModel(int vmId)
-        {
-            this.vm_id = vmId;
-        }
-    }
-
-    public class VMRescueResponseModel : BaseResponseModel
-    {
-        /*
-        {"success":"no","error":"invalid vm"}
-        or
-        {"success":"no","error":"ERROR (CommandError): Unable to Rescue the specified server(s)."}
-        or
-        {"success":"yes"}
-        */
     }
 }

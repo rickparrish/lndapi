@@ -13,8 +13,7 @@ namespace lndapi
     {
         public async Task<int> ImageFetchAsync(string region, string name, string location, string format, string virtio)
         {
-            var Result = await RequestAsync<ImageFetchResponseModel>("image", "fetch", new ImageFetchRequestModel(region, name, location, format, virtio));
-            return Result.image_id;
+            return (await RequestAsync<ImageFetchResponseModel>("image", "fetch", new ImageFetchRequestModel(region, name, location, format, virtio))).image_id;
         }
     }
 }

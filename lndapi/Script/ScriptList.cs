@@ -12,8 +12,7 @@ namespace lndapi
     {
         public async Task<ScriptListScripts[]> ScriptListAsync()
         {
-            var Result = await RequestAsync<ScriptListResponseModel>("script", "list", new BaseRequestModel());
-            return Result.scripts;
+            return (await RequestAsync<ScriptListResponseModel>("script", "list", new BaseRequestModel())).scripts;
         }
     }
 }

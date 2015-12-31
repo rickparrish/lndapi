@@ -12,33 +12,20 @@ namespace lndapi
     {
         public async Task VMReImageAsync(int vmId, int imageId)
         {
-            await RequestAsync<VMReImageResponseModel>("vm", "reimage", new VMReImageRequestModel(vmId, imageId));
+            await RequestAsync<BaseResponseModel>("vm", "reimage", new VMReImageRequestModel(vmId, imageId));
         }
     }
 }
 
 namespace lndapi.VM
 {
-    public class VMReImageRequestModel : BaseRequestModel
+    public class VMReImageRequestModel : VMBaseRequestModel
     {
-        public int vm_id { get; set; }
         public int image_id { get; set; }
 
-        public VMReImageRequestModel(int vmId, int imageId)
+        public VMReImageRequestModel(int vmId, int imageId) : base(vmId)
         {
-            this.vm_id = vmId;
             this.image_id = imageId;
         }
-    }
-
-    public class VMReImageResponseModel : BaseResponseModel
-    {
-        /*
-        {"success":"no","error":"invalid vm"}
-        or
-        {"success":"no","error":"invalid image selection"}
-        or
-        {"success":"yes"}
-        */
     }
 }

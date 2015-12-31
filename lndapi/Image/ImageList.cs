@@ -17,8 +17,7 @@ namespace lndapi
 
         public async Task<ImageListImages[]> ImageListAsync(string region)
         {
-            var Result = await RequestAsync<ImageListResponseModel>("image", "list", new ImageListRequestModel(region));
-            return Result.images;
+            return (await RequestAsync<ImageListResponseModel>("image", "list", new ImageListRequestModel(region))).images;
         }
     }
 }

@@ -16,33 +16,20 @@ namespace lndapi
             //      API reports success if this is attempted, but in reality nothing happens.
             //      Should I ask them to report failure in this scenario, or do I check if the resize is impossible and throw an exception?
             //      Just got an email saying resize failed.  It also indicates resizing when installing from ISO is also impossible
-            await RequestAsync<VMResizeResponseModel>("vm", "resize", new VMResizeRequestModel(vmId, planId));
+            await RequestAsync<BaseResponseModel>("vm", "resize", new VMResizeRequestModel(vmId, planId));
         }
     }
 }
 
 namespace lndapi.VM
 {
-    public class VMResizeRequestModel : BaseRequestModel
+    public class VMResizeRequestModel : VMBaseRequestModel
     {
-        public int vm_id { get; set; }
         public int plan_id { get; set; }
 
-        public VMResizeRequestModel(int vmId, int planId)
+        public VMResizeRequestModel(int vmId, int planId) : base(vmId)
         {
-            this.vm_id = vmId;
             this.plan_id = planId;
         }
-    }
-
-    public class VMResizeResponseModel : BaseResponseModel
-    {
-        /*
-        {"success":"no","error":"invalid vm"}
-        or
-        {"success":"no","error":"invalid plan"}
-        or
-        {"success":"yes"}
-        */
     }
 }

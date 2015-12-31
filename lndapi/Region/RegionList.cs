@@ -13,8 +13,7 @@ namespace lndapi
     {
         public async Task<Dictionary<string, string>> RegionListAsync()
         {
-            var Result = await RequestAsync<RegionListResponseModel>("region", "list", new BaseRequestModel());
-            return Result.regions;
+            return (await RequestAsync<RegionListResponseModel>("region", "list", new BaseRequestModel())).regions;
         }
     }
 }

@@ -12,24 +12,13 @@ namespace lndapi
     {
         public async Task<VMInfoInfo> VMInfoAsync(int vmId)
         {
-            var Result = await RequestAsync<VMInfoResponseModel>("vm", "info", new VMInfoRequestModel(vmId));
-            return Result.info;
+            return (await RequestAsync<VMInfoResponseModel>("vm", "info", new VMBaseRequestModel(vmId))).info;
         }
     }
 }
 
 namespace lndapi.VM
 {
-    public class VMInfoRequestModel : BaseRequestModel
-    {
-        public int vm_id { get; set; }
-
-        public VMInfoRequestModel(int vmId)
-        {
-            this.vm_id = vmId;
-        }
-    }
-
     public class VMInfoResponseModel : BaseResponseModel
     {
         /*

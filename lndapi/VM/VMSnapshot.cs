@@ -13,22 +13,19 @@ namespace lndapi
     {
         public async Task<int> VMSnapshotAsync(int vmId, string name)
         {
-            var Result = await RequestAsync<VMSnapshotResponseModel>("vm", "snapshot", new VMSnapshotRequestModel(vmId, name));
-            return Result.image_id;
+            return (await RequestAsync<VMSnapshotResponseModel>("vm", "snapshot", new VMSnapshotRequestModel(vmId, name))).image_id;
         }
     }
 }
 
 namespace lndapi.VM
 {
-    public class VMSnapshotRequestModel : BaseRequestModel
+    public class VMSnapshotRequestModel : VMBaseRequestModel
     {
-        public int vm_id { get; set; }
         public string name { get; set; }
 
-        public VMSnapshotRequestModel(int vmId, string name)
+        public VMSnapshotRequestModel(int vmId, string name) : base(vmId)
         {
-            this.vm_id = vmId;
             this.name = name;
         }
     }

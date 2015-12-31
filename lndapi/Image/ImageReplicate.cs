@@ -12,8 +12,7 @@ namespace lndapi
     {
         public async Task<int> ImageReplicateAsync(int imageId, string region)
         {
-            var Result = await RequestAsync<ImageReplicateResponseModel>("image", "replicate", new ImageReplicateRequestModel(imageId, region));
-            return Result.image_id;
+            return (await RequestAsync<ImageReplicateResponseModel>("image", "replicate", new ImageReplicateRequestModel(imageId, region))).image_id;
         }
     }
 }

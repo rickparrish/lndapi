@@ -12,8 +12,7 @@ namespace lndapi
     {
         public async Task<ImageDetailsDetails> ImageDetailsAsync(int imageId)
         {
-            var Result = await RequestAsync<ImageDetailsResponseModel>("image", "details", new ImageDetailsRequestModel(imageId));
-            return Result.details;
+            return (await RequestAsync<ImageDetailsResponseModel>("image", "details", new ImageDetailsRequestModel(imageId))).details;
         }
     }
 }

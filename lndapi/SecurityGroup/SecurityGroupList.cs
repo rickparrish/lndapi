@@ -12,8 +12,7 @@ namespace lndapi
     {
         public async Task<SecurityGroupListSecurityGroups[]> SecurityGroupListAsync()
         {
-            var Result = await RequestAsync<SecurityGroupListResponseModel>("securitygroup", "list", new BaseRequestModel());
-            return Result.securitygroups;
+            return (await RequestAsync<SecurityGroupListResponseModel>("securitygroup", "list", new BaseRequestModel())).securitygroups;
         }
     }
 }

@@ -12,8 +12,7 @@ namespace lndapi
     {
         public async Task<double> BillingCreditAsync()
         {
-            var Result = await RequestAsync<BillingCreditResponseModel>("billing", "credit", new BaseRequestModel());
-            return Result.credit;
+            return (await RequestAsync<BillingCreditResponseModel>("billing", "credit", new BaseRequestModel())).credit;
         }
     }
 }
