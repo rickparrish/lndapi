@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Base\Base.cs" />
     <Compile Include="Image\ImageDelete.cs" />
+    <Compile Include="Image\ImageReplicate.cs" />
     <Compile Include="Image\ImageRetrieve.cs" />
     <Compile Include="Image\ImageList.cs" />
     <Compile Include="Image\ImageDetails.cs" />
