@@ -7,8 +7,8 @@
     <ProjectGuid>{2865F648-B4EB-43F0-9966-3BC37E867EF8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>lnapi</RootNamespace>
-    <AssemblyName>lnapi</AssemblyName>
+    <RootNamespace>lndapi</RootNamespace>
+    <AssemblyName>lndapi</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -53,6 +53,7 @@
     <Compile Include="Base\LNDException.cs" />
     <Compile Include="LNDynamic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VM\VMList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
