@@ -22,32 +22,15 @@ namespace lndapi.VM
 {
     public class VMListRequestModel : BaseRequestModel
     {
-        public string region { get; set; }
-
         public VMListRequestModel(BaseRequestModel brm)
         {
             this.api_id = brm.api_id;
             this.api_key = brm.api_key;
-            this.region = null;
-        }
-
-        public VMListRequestModel(BaseRequestModel brm, string region)
-        {
-            this.api_id = brm.api_id;
-            this.api_key = brm.api_key;
-            this.region = region;
         }
 
         public override string ToString()
         {
-            if (this.region == null)
-            {
-                return $"{base.ToString()}";
-            }
-            else
-            {
-                return $"region={region}&{base.ToString()}";
-            }
+            return $"{base.ToString()}";
         }
     }
 
