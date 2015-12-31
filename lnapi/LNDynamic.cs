@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 // TODO Test everything with a restricted api key
+// TODO Image Fetch -- what is virtio parameter?
 
 namespace lnapi
 {
