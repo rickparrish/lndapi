@@ -47,6 +47,7 @@
     <Compile Include="Base\Base.cs" />
     <Compile Include="Image\Base.cs" />
     <Compile Include="Network\List.cs" />
+    <Compile Include="DNS\List.cs" />
     <Compile Include="Region\List.cs" />
     <Compile Include="Plan\List.cs" />
     <Compile Include="SecurityGroup\List.cs" />
