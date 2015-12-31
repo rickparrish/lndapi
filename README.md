@@ -12,6 +12,8 @@ Their service includes an API that can be used to automate parts of the control 
 
 <strong>vm</strong>: start, stop, reboot, info, delete, reimage, resize, rescue, vnc, snapshot, list<br />
 <strong>image</strong>: list, delete, details, replicate, fetch, retrieve<br />
+<strong>plan</strong>: list<br />
+<strong>region</strong>: list<br />
 <strong>securitygroup</strong>: list<br />
 startup <strong>script</strong>: list<br />
 <strong>billing</strong>: credit<br />
@@ -24,7 +26,5 @@ startup <strong>script</strong>: list<br />
 <strong>floating</strong> ip: list, add, delete<br />
 virtual <strong>network</strong>: list, create, delete<br />
 <strong>lb</strong> (load balancer): list, create, delete, info, member_add, member_remove, associate<br />
-<strong>plan</strong>: list<br />
-<strong>region</strong>: list<br />
 server <strong>monitor</strong>: check-list, check-types, check-add, check-remove, contact-list, contact-add, contact-remove, alert-list, alert-add, alert-remove<br />
 

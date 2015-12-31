@@ -72,6 +72,6 @@ namespace lndapi.Image
         public string hw_video_model { get; set; }
         public string name { get; set; }
         public string region { get; set; }
-        public string metadata { get; set; }
+        public Dictionary<string, string> metadata { get; set; }
     }
 }
