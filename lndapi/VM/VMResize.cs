@@ -12,6 +12,10 @@ namespace lndapi
     {
         public async Task VMResizeAsync(int vmId, int planId)
         {
+            // TODO If local storage is in use, can't go down in disk size
+            //      API reports success if this is attempted, but in reality nothing happens.
+            //      Should I ask them to report failure in this scenario, or do I check if the resize is impossible and throw an exception?
+            //      Just got an email saying resize failed.  It also indicates resizing when installing from ISO is also impossible
             await RequestAsync<VMResizeResponseModel>("vm", "resize", new VMResizeRequestModel(_BRM, vmId, planId));
         }
     }
