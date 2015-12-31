@@ -1,4 +1,4 @@
-﻿using lnapi.Base;
+﻿using lndapi.Base;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 // TODO Test everything with a restricted api key
 // TODO Image Fetch -- what is virtio parameter?
 
-namespace lnapi
+namespace lndapi
 {
     public partial class LNDynamic : IDisposable
     {

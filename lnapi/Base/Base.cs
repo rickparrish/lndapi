@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lnapi.Base
+namespace lndapi.Base
 {
     public class BaseRequestModel
     {

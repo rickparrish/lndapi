@@ -1,12 +1,12 @@
-﻿using lnapi.Base;
-using lnapi.Image;
+﻿using lndapi.Base;
+using lndapi.Image;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lnapi
+namespace lndapi
 {
     public partial class LNDynamic
     {
@@ -18,7 +18,7 @@ namespace lnapi
     }
 }
 
-namespace lnapi.Image
+namespace lndapi.Image
 {
     public class ImageDetailsRequestModel : BaseRequestModel
     {
