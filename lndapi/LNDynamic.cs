@@ -15,7 +15,6 @@ using System.Threading.Tasks;
 // TODO VM floatingip-add 
 // TODO VM floatingip-delete
 // TODO VM create
-// TODO Error-proof some function calls (i.e. ImageFetchAsync should take virtio as bool and format as enum, and the requestmodel constructor can handle remapping to correct magic strings)
 
 namespace lndapi
 {
