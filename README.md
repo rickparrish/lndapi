@@ -11,12 +11,11 @@ Their service includes an API that can be used to automate parts of the control 
 # Supported Actions
 
 <strong>vm</strong>: start, stop, reboot, info, delete, reimage, resize, rescue, vnc, snapshot, list<br />
-<strong>image</strong>: list, delete, details, replicate, retrieve<br />
+<strong>image</strong>: list, delete, details, replicate, fetch, retrieve<br />
 
 # Unsupported Actions (for now)
 
 <strong>vm</strong>: diskswap, floatingip-add, floatingip-delete, create<br />
-<strong>image</strong>: fetch<br />
 <strong>dns</strong>: list, set, zone-list, zone-add, zone-remove, record-list, record-add, record-remove, dyn-list, dyn-add, dyn-update, dyn-remove<br />
 <strong>volume</strong>: list, create, delete, attach, detach, info<br />
 <strong>floating</strong> ip: list, add, delete<br />

@@ -8,9 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 // TODO Test everything with a restricted api key
-// TODO Image Fetch -- what is virtio parameter?
 // TODO VM DiskSwawp -- what is it?
 //      {"success":"no","error":"the VM must be stopped before disk swap can proceed"}
+// TODO VM floatingip-add 
+// TODO VM floatingip-delete
+// TODO VM create
 
 namespace lndapi
 {
