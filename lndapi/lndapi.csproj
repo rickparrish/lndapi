@@ -54,6 +54,7 @@
     <Compile Include="LNDynamic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VM\VMInfo.cs" />
+    <Compile Include="VM\VMReImage.cs" />
     <Compile Include="VM\VMStop.cs" />
     <Compile Include="VM\VMReboot.cs" />
     <Compile Include="VM\VMStart.cs" />
