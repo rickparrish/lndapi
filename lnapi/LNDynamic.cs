@@ -7,6 +7,8 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
+// TODO Test everything with a restricted api key
+
 namespace lnapi
 {
     public partial class LNDynamic : IDisposable

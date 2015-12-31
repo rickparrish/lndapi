@@ -10,9 +10,10 @@ namespace lnapi
 {
     public partial class LNDynamic
     {
-        public async Task<ImageDetailsResponseModel> ImageDetailsAsync(int imageId)
+        public async Task<ImageDetailsDetails> ImageDetailsAsync(int imageId)
         {
-            return await RequestAsync<ImageDetailsResponseModel>("image", "details", new ImageDetailsRequestModel(_BRM, imageId));
+            var Result = await RequestAsync<ImageDetailsResponseModel>("image", "details", new ImageDetailsRequestModel(_BRM, imageId));
+            return Result.details;
         }
     }
 }
