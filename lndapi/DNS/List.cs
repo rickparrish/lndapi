@@ -32,13 +32,13 @@ namespace lndapi.VM
             {
               "vm_name": "www-lunanode-toronto",
               "vm_id": "11804",
-              "ip": "170.75.163.46",
-              "hostname": "46.163.75.170.rdns.lunanode.com."
+              "ip": "a.b.c.d",
+              "hostname": "d.c.b.a.rdns.lunanode.com."
             },
             {
               "vm_name": "www-lunanode-toronto",
               "vm_id": "11804",
-              "ip": "2602:ffb6:2:0:f816:3eff:fef4:9140",
+              "ip": "a:b:c:d:e:f:g:h",
               "hostname": "[not set]"
             }
           ]
