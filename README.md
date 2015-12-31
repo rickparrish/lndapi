@@ -17,3 +17,14 @@ Their service includes an API that can be used to automate parts of the control 
 
 <strong>vm</strong>: diskswap, floatingip-add, floatingip-delete, create<br />
 <strong>image</strong>: fetch<br />
+<strong>dns</strong>: list, set, zone-list, zone-add, zone-remove, record-list, record-add, record-remove, dyn-list, dyn-add, dyn-update, dyn-remove<br />
+<strong>volume</strong>: list, create, delete, attach, detach, info<br />
+<strong>floating</strong> ip: list, add, delete<br />
+virtual <strong>network</strong>: list, create, delete<br />
+<strong>lb</strong> (load balancer): list, create, delete, info, member_add, member_remove, associate<br />
+<strong>plan</strong>: list<br />
+<strong>region</strong>: list<br />
+server <strong>monitor</strong>: check-list, check-types, check-add, check-remove, contact-list, contact-add, contact-remove, alert-list, alert-add, alert-remove<br />
+<strong>securitygroup</strong>: list<br />
+startup <strong>script</strong>: list<br />
+<strong>billing</strong>: credit<br />
