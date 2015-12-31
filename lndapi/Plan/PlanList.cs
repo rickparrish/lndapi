@@ -12,7 +12,7 @@ namespace lndapi
     {
         public async Task<PlanListPlans[]> PlanListAsync()
         {
-            var Result = await RequestAsync<PlanListResponseModel>("plan", "list", new PlanListRequestModel(_BRM));
+            var Result = await RequestAsync<PlanListResponseModel>("plan", "list", new BaseRequestModel());
             return Result.plans;
         }
     }
@@ -20,18 +20,6 @@ namespace lndapi
 
 namespace lndapi.VM
 {
-    public class PlanListRequestModel : BaseRequestModel
-    {
-        public PlanListRequestModel(BaseRequestModel brm) : base(brm)
-        {
-        }
-
-        public override string ToString()
-        {
-            return $"{base.ToString()}";
-        }
-    }
-
     public class PlanListResponseModel : BaseResponseModel
     {
         /*

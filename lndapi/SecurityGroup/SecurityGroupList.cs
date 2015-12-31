@@ -12,7 +12,7 @@ namespace lndapi
     {
         public async Task<SecurityGroupListSecurityGroups[]> SecurityGroupListAsync()
         {
-            var Result = await RequestAsync<SecurityGroupListResponseModel>("securitygroup", "list", new SecurityGroupListRequestModel(_BRM));
+            var Result = await RequestAsync<SecurityGroupListResponseModel>("securitygroup", "list", new BaseRequestModel());
             return Result.securitygroups;
         }
     }
@@ -20,18 +20,6 @@ namespace lndapi
 
 namespace lndapi.VM
 {
-    public class SecurityGroupListRequestModel : BaseRequestModel
-    {
-        public SecurityGroupListRequestModel(BaseRequestModel brm) : base(brm)
-        {
-        }
-
-        public override string ToString()
-        {
-            return $"{base.ToString()}";
-        }
-    }
-
     public class SecurityGroupListResponseModel : BaseResponseModel
     {
         /*

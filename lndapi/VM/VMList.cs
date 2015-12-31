@@ -12,7 +12,7 @@ namespace lndapi
     {
         public async Task<VMListVMs[]> VMListAsync()
         {
-            var Result = await RequestAsync<VMListResponseModel>("vm", "list", new VMListRequestModel(_BRM));
+            var Result = await RequestAsync<VMListResponseModel>("vm", "list", new BaseRequestModel());
             return Result.vms;
         }
     }
@@ -20,18 +20,6 @@ namespace lndapi
 
 namespace lndapi.VM
 {
-    public class VMListRequestModel : BaseRequestModel
-    {
-        public VMListRequestModel(BaseRequestModel brm) : base(brm)
-        {
-        }
-
-        public override string ToString()
-        {
-            return $"{base.ToString()}";
-        }
-    }
-
     public class VMListResponseModel : BaseResponseModel
     {
         /*

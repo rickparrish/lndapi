@@ -12,7 +12,7 @@ namespace lndapi
     {
         public async Task VMReImageAsync(int vmId, int imageId)
         {
-            await RequestAsync<VMReImageResponseModel>("vm", "reimage", new VMReImageRequestModel(_BRM, vmId, imageId));
+            await RequestAsync<VMReImageResponseModel>("vm", "reimage", new VMReImageRequestModel(vmId, imageId));
         }
     }
 }
@@ -24,15 +24,10 @@ namespace lndapi.VM
         public int vm_id { get; set; }
         public int image_id { get; set; }
 
-        public VMReImageRequestModel(BaseRequestModel brm, int vmId, int imageId) : base(brm)
+        public VMReImageRequestModel(int vmId, int imageId)
         {
             this.vm_id = vmId;
             this.image_id = imageId;
-        }
-
-        public override string ToString()
-        {
-            return $"vm_id={vm_id}&image_id={image_id}&{base.ToString()}";
         }
     }
 

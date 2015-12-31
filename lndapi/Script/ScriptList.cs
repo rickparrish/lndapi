@@ -12,7 +12,7 @@ namespace lndapi
     {
         public async Task<ScriptListScripts[]> ScriptListAsync()
         {
-            var Result = await RequestAsync<ScriptListResponseModel>("script", "list", new ScriptListRequestModel(_BRM));
+            var Result = await RequestAsync<ScriptListResponseModel>("script", "list", new BaseRequestModel());
             return Result.scripts;
         }
     }
@@ -20,18 +20,6 @@ namespace lndapi
 
 namespace lndapi.VM
 {
-    public class ScriptListRequestModel : BaseRequestModel
-    {
-        public ScriptListRequestModel(BaseRequestModel brm) : base(brm)
-        {
-        }
-
-        public override string ToString()
-        {
-            return $"{base.ToString()}";
-        }
-    }
-
     public class ScriptListResponseModel : BaseResponseModel
     {
         /*

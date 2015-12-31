@@ -17,7 +17,7 @@ namespace lndapi
 
         public async Task<ImageListImages[]> ImageListAsync(string region)
         {
-            var Result = await RequestAsync<ImageListResponseModel>("image", "list", new ImageListRequestModel(_BRM, region));
+            var Result = await RequestAsync<ImageListResponseModel>("image", "list", new ImageListRequestModel(region));
             return Result.images;
         }
     }
@@ -25,30 +25,14 @@ namespace lndapi
 
 namespace lndapi.Image
 {
+    // TODO region should be optional
     public class ImageListRequestModel : BaseRequestModel
     {
         public string region { get; set; }
 
-        public ImageListRequestModel(BaseRequestModel brm) : base(brm)
-        {
-            this.region = null;
-        }
-
-        public ImageListRequestModel(BaseRequestModel brm, string region) : base(brm)
+        public ImageListRequestModel(string region)
         {
             this.region = region;
-        }
-
-        public override string ToString()
-        {
-            if (this.region == null)
-            {
-                return $"{base.ToString()}";
-            }
-            else
-            {
-                return $"region={region}&{base.ToString()}";
-            }
         }
     }
 

@@ -12,7 +12,7 @@ namespace lndapi
     {
         public async Task VMDeleteAsync(int vmId)
         {
-            await RequestAsync<VMDeleteResponseModel>("vm", "delete", new VMDeleteRequestModel(_BRM, vmId));
+            await RequestAsync<VMDeleteResponseModel>("vm", "delete", new VMDeleteRequestModel(vmId));
         }
     }
 }
@@ -23,14 +23,9 @@ namespace lndapi.VM
     {
         public int vm_id { get; set; }
 
-        public VMDeleteRequestModel(BaseRequestModel brm, int vmId) : base(brm)
+        public VMDeleteRequestModel(int vmId)
         {
             this.vm_id = vmId;
-        }
-
-        public override string ToString()
-        {
-            return $"vm_id={vm_id}&{base.ToString()}";
         }
     }
 

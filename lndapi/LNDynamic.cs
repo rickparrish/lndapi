@@ -22,20 +22,16 @@ namespace lndapi
     {
         public const string BASE_URL_LEGACY = "https://dynamic.lunanode.com/api.php";
         public const string DYNAMIC_URL = "https://dynamic.lunanode.com/api/{CATEGORY}/{ACTION}/";
+        private string _APIId = null;
         private string _APIKey = null;
-        private BaseRequestModel _BRM = null;
 
         public LNDynamic(string apiId, string apiKey)
         {
             if (apiId.Length != 16) throw new ArgumentException("supplied apiId incorrect length, must be 16", apiId);
             if (apiKey.Length != 128) throw new ArgumentException("supplied apiKey incorrect length, must be 128", apiKey);
 
+            _APIId = apiId;
             _APIKey = apiKey;
-            _BRM = new BaseRequestModel()
-            {
-                api_id = apiId,
-                api_partialkey = apiKey
-            };
         }
 
         // TODO Could convert this to the newer API style instead of using legacy
@@ -48,6 +44,8 @@ namespace lndapi
                 //Uri RequestUrl = new Uri($"{BASE_URL_LEGACY}?category={category}&action={action}&{requestModel.ToString()}");
                 //string ResponseText = await WC.DownloadStringTaskAsync(RequestUrl);
 
+                requestModel.api_id = _APIId;
+                requestModel.api_partialkey = _APIKey.Substring(0, 64);
                 string ModelData = JsonConvert.SerializeObject(requestModel);
                 int Nonce = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds; // https://dzone.com/articles/get-unix-epoch-time-one-line-c
                 string Signature = hash_hmac("sha512", $"{category}/{action}/|{ModelData}|{Nonce.ToString()}", _APIKey);

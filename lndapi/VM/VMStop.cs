@@ -12,7 +12,7 @@ namespace lndapi
     {
         public async Task VMStopAsync(int vmId)
         {
-            await RequestAsync<VMStopResponseModel>("vm", "stop", new VMStopRequestModel(_BRM, vmId));
+            await RequestAsync<VMStopResponseModel>("vm", "stop", new VMStopRequestModel(vmId));
         }
     }
 }
@@ -23,14 +23,9 @@ namespace lndapi.VM
     {
         public int vm_id { get; set; }
 
-        public VMStopRequestModel(BaseRequestModel brm, int vmId) : base(brm)
+        public VMStopRequestModel(int vmId)
         {
             this.vm_id = vmId;
-        }
-
-        public override string ToString()
-        {
-            return $"vm_id={vm_id}&{base.ToString()}";
         }
     }
 

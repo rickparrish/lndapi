@@ -13,7 +13,7 @@ namespace lndapi
     {
         public async Task<int> ImageFetchAsync(string region, string name, string location, string format, string virtio)
         {
-            var Result = await RequestAsync<ImageFetchResponseModel>("image", "fetch", new ImageFetchRequestModel(_BRM, region, name, location, format, virtio));
+            var Result = await RequestAsync<ImageFetchResponseModel>("image", "fetch", new ImageFetchRequestModel(region, name, location, format, virtio));
             return Result.image_id;
         }
     }
@@ -29,18 +29,13 @@ namespace lndapi.Image
         public string format { get; set; }
         public string virtio { get; set; }
 
-        public ImageFetchRequestModel(BaseRequestModel brm, string region, string name, string location, string format, string virtio) : base(brm)
+        public ImageFetchRequestModel(string region, string name, string location, string format, string virtio)
         {
             this.region = region;
             this.name = name;
             this.location = location;
             this.format = format;
             this.virtio = virtio;
-        }
-
-        public override string ToString()
-        {
-            return $"region={region}&name={WebUtility.UrlEncode(name)}&location={WebUtility.UrlEncode(location)}&format={format}&virtio={virtio}&{base.ToString()}";
         }
     }
 

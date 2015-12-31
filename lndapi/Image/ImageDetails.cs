@@ -12,7 +12,7 @@ namespace lndapi
     {
         public async Task<ImageDetailsDetails> ImageDetailsAsync(int imageId)
         {
-            var Result = await RequestAsync<ImageDetailsResponseModel>("image", "details", new ImageDetailsRequestModel(_BRM, imageId));
+            var Result = await RequestAsync<ImageDetailsResponseModel>("image", "details", new ImageDetailsRequestModel(imageId));
             return Result.details;
         }
     }
@@ -24,14 +24,9 @@ namespace lndapi.Image
     {
         public int image_id { get; set; }
 
-        public ImageDetailsRequestModel(BaseRequestModel brm, int imageId) : base(brm)
+        public ImageDetailsRequestModel(int imageId)
         {
             this.image_id = imageId;
-        }
-
-        public override string ToString()
-        {
-            return $"image_id={image_id}&{base.ToString()}";
         }
     }
 

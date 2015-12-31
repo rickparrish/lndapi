@@ -12,7 +12,7 @@ namespace lndapi
     {
         public async Task VMStartAsync(int vmId)
         {
-            await RequestAsync<VMStartResponseModel>("vm", "start", new VMStartRequestModel(_BRM, vmId));
+            await RequestAsync<VMStartResponseModel>("vm", "start", new VMStartRequestModel(vmId));
         }
     }
 }
@@ -23,14 +23,9 @@ namespace lndapi.VM
     {
         public int vm_id { get; set; }
 
-        public VMStartRequestModel(BaseRequestModel brm, int vmId) : base(brm)
+        public VMStartRequestModel(int vmId) 
         {
             this.vm_id = vmId;
-        }
-
-        public override string ToString()
-        {
-            return $"vm_id={vm_id}&{base.ToString()}";
         }
     }
 

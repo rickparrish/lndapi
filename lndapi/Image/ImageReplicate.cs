@@ -12,7 +12,7 @@ namespace lndapi
     {
         public async Task<int> ImageReplicateAsync(int imageId, string region)
         {
-            var Result = await RequestAsync<ImageReplicateResponseModel>("image", "replicate", new ImageReplicateRequestModel(_BRM, imageId, region));
+            var Result = await RequestAsync<ImageReplicateResponseModel>("image", "replicate", new ImageReplicateRequestModel(imageId, region));
             return Result.image_id;
         }
     }
@@ -25,15 +25,10 @@ namespace lndapi.Image
         public int image_id { get; set; }
         public string region { get; set; }
 
-        public ImageReplicateRequestModel(BaseRequestModel brm, int imageId, string region) : base(brm)
+        public ImageReplicateRequestModel(int imageId, string region)
         {
             this.image_id = imageId;
             this.region = region;
-        }
-
-        public override string ToString()
-        {
-            return $"image_id={image_id}&region={region}&{base.ToString()}";
         }
     }
 

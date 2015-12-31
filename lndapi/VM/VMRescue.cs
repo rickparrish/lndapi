@@ -12,7 +12,7 @@ namespace lndapi
     {
         public async Task VMRescueAsync(int vmId)
         {
-            await RequestAsync<VMRescueResponseModel>("vm", "rescue", new VMRescueRequestModel(_BRM, vmId));
+            await RequestAsync<VMRescueResponseModel>("vm", "rescue", new VMRescueRequestModel(vmId));
         }
     }
 }
@@ -23,14 +23,9 @@ namespace lndapi.VM
     {
         public int vm_id { get; set; }
 
-        public VMRescueRequestModel(BaseRequestModel brm, int vmId) : base(brm)
+        public VMRescueRequestModel(int vmId)
         {
             this.vm_id = vmId;
-        }
-
-        public override string ToString()
-        {
-            return $"vm_id={vm_id}&{base.ToString()}";
         }
     }
 

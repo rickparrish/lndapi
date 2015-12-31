@@ -13,7 +13,7 @@ namespace lndapi
     {
         public async Task<int> VMSnapshotAsync(int vmId, string name)
         {
-            var Result = await RequestAsync<VMSnapshotResponseModel>("vm", "snapshot", new VMSnapshotRequestModel(_BRM, vmId, name));
+            var Result = await RequestAsync<VMSnapshotResponseModel>("vm", "snapshot", new VMSnapshotRequestModel(vmId, name));
             return Result.image_id;
         }
     }
@@ -26,15 +26,10 @@ namespace lndapi.VM
         public int vm_id { get; set; }
         public string name { get; set; }
 
-        public VMSnapshotRequestModel(BaseRequestModel brm, int vmId, string name) : base(brm)
+        public VMSnapshotRequestModel(int vmId, string name)
         {
             this.vm_id = vmId;
             this.name = name;
-        }
-
-        public override string ToString()
-        {
-            return $"vm_id={vm_id}&name={WebUtility.UrlEncode(name)}&{base.ToString()}";
         }
     }
 

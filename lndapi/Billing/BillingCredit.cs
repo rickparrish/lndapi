@@ -12,7 +12,7 @@ namespace lndapi
     {
         public async Task<double> BillingCreditAsync()
         {
-            var Result = await RequestAsync<BillingCreditResponseModel>("billing", "credit", new BillingCreditRequestModel(_BRM));
+            var Result = await RequestAsync<BillingCreditResponseModel>("billing", "credit", new BaseRequestModel());
             return Result.credit;
         }
     }
@@ -20,18 +20,6 @@ namespace lndapi
 
 namespace lndapi.VM
 {
-    public class BillingCreditRequestModel : BaseRequestModel
-    {
-        public BillingCreditRequestModel(BaseRequestModel brm) : base(brm)
-        {
-        }
-
-        public override string ToString()
-        {
-            return $"{base.ToString()}";
-        }
-    }
-
     public class BillingCreditResponseModel : BaseResponseModel
     {
         /*

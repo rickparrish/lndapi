@@ -13,7 +13,7 @@ namespace lndapi
     {
         public async Task<Dictionary<string, string>> RegionListAsync()
         {
-            var Result = await RequestAsync<RegionListResponseModel>("region", "list", new RegionListRequestModel(_BRM));
+            var Result = await RequestAsync<RegionListResponseModel>("region", "list", new BaseRequestModel());
             return Result.regions;
         }
     }
@@ -21,18 +21,6 @@ namespace lndapi
 
 namespace lndapi.VM
 {
-    public class RegionListRequestModel : BaseRequestModel
-    {
-        public RegionListRequestModel(BaseRequestModel brm) : base(brm)
-        {
-        }
-
-        public override string ToString()
-        {
-            return $"{base.ToString()}";
-        }
-    }
-
     public class RegionListResponseModel : BaseResponseModel
     {
         /*

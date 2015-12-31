@@ -28,7 +28,8 @@ namespace lndapi
                     };
                 }
 
-                Uri RetrieveImageUrl = new Uri($"{BASE_URL_LEGACY}?category=image&action=retrieve&image_id={imageId}&{_BRM.ToString()}");
+                // TODO Handle in base Request method (maybe it can handle separately the image/retrieve call)
+                Uri RetrieveImageUrl = new Uri($"{BASE_URL_LEGACY}?category=image&action=retrieve&image_id={imageId}&api_id={_APIId}&api_key={_APIKey}");
                 await WC.DownloadFileTaskAsync(RetrieveImageUrl, filename);
 
                 // Check for JSON indicating a failure

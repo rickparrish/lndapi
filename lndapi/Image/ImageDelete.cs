@@ -12,7 +12,7 @@ namespace lndapi
     {
         public async Task ImageDeleteAsync(int imageId)
         {
-            await RequestAsync<ImageDeleteResponseModel>("image", "delete", new ImageDeleteRequestModel(_BRM, imageId));
+            await RequestAsync<ImageDeleteResponseModel>("image", "delete", new ImageDeleteRequestModel(imageId));
         }
     }
 }
@@ -23,14 +23,9 @@ namespace lndapi.Image
     {
         public int image_id { get; set; }
 
-        public ImageDeleteRequestModel(BaseRequestModel brm, int imageId) : base(brm)
+        public ImageDeleteRequestModel(int imageId)
         {
             this.image_id = imageId;
-        }
-
-        public override string ToString()
-        {
-            return $"image_id={image_id}&{base.ToString()}";
         }
     }
 
