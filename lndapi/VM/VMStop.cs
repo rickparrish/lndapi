@@ -10,6 +10,10 @@ namespace lndapi
 {
     public partial class LNDynamic
     {
+        /// <summary>
+        /// Stop a VM
+        /// </summary>
+        /// <param name="vmId">The id of the VM to stop</param>
         public async Task VMStopAsync(int vmId)
         {
             await RequestAsync<BaseResponseModel>("vm", "stop", new VMBaseRequestModel(vmId));

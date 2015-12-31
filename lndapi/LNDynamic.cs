@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 // TODO VM floatingip-add 
 // TODO VM floatingip-delete
 // TODO VM create
+// TODO Error-proof some function calls (i.e. ImageFetchAsync should take virtio as bool and format as enum, and the requestmodel constructor can handle remapping to correct magic strings)
 
 namespace lndapi
 {
@@ -34,19 +35,16 @@ namespace lndapi
             _APIKey = apiKey;
         }
 
-        // TODO Could convert this to the newer API style instead of using legacy
-        public async Task<T> RequestAsync<T>(string category, string action, BaseRequestModel requestModel)
+        private async Task<T> RequestAsync<T>(string category, string action, BaseRequestModel requestModel)
         {
             using (WebClient WC = new WebClient())
             {
                 WC.Proxy = null;
 
-                //Uri RequestUrl = new Uri($"{BASE_URL_LEGACY}?category={category}&action={action}&{requestModel.ToString()}");
-                //string ResponseText = await WC.DownloadStringTaskAsync(RequestUrl);
-
                 requestModel.api_id = _APIId;
                 requestModel.api_partialkey = _APIKey.Substring(0, 64);
                 string ModelData = JsonConvert.SerializeObject(requestModel);
+
                 int Nonce = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds; // https://dzone.com/articles/get-unix-epoch-time-one-line-c
                 string Signature = hash_hmac("sha512", $"{category}/{action}/|{ModelData}|{Nonce.ToString()}", _APIKey);
                 NameValueCollection RequestData = new NameValueCollection()
@@ -72,9 +70,9 @@ namespace lndapi
         }
 
         // http://stackoverflow.com/a/12804391/342378
-        // TODO algo is ignored
         private string hash_hmac(string algo, string data, string key)
         {
+            // TODO algo is ignored
             var keyByte = Encoding.UTF8.GetBytes(key);
             using (var hmacsha512 = new HMACSHA512(keyByte))
             {

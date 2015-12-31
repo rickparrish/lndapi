@@ -10,6 +10,10 @@ namespace lndapi
 {
     public partial class LNDynamic
     {
+        /// <summary>
+        /// Retrieve the list of VMs
+        /// </summary>
+        /// <returns>The list of VMs</returns>
         public async Task<VMListVMs[]> VMListAsync()
         {
             return (await RequestAsync<VMListResponseModel>("vm", "list", new BaseRequestModel())).vms;

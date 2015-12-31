@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace lndapi.Image
 {
+    /// <summary>
+    /// Base request model that most Image API calls use
+    /// </summary>
     public class ImageBaseRequestModel : BaseRequestModel
     {
         public int image_id { get; set; }

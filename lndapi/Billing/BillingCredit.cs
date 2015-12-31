@@ -10,6 +10,10 @@ namespace lndapi
 {
     public partial class LNDynamic
     {
+        /// <summary>
+        /// Retrieve your credit balance
+        /// </summary>
+        /// <returns>Your remaining balance (in USD)</returns>
         public async Task<double> BillingCreditAsync()
         {
             return (await RequestAsync<BillingCreditResponseModel>("billing", "credit", new BaseRequestModel())).credit;

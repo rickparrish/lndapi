@@ -11,6 +11,13 @@ namespace lndapi
 {
     public partial class LNDynamic
     {
+        /// <summary>
+        /// Snapshot a VM (i.e. create an image of the VM)
+        /// </summary>
+        /// <param name="vmId">The id of the VM to snapshot</param>
+        /// <param name="name">The name to give the snapshot</param>
+        /// <returns>The id for the newly created image</returns>
+        /// <remarks>The method will return immediately, but it will take time to actually create the snapshot.  Use ImageDetails to check on the status.</remarks>
         public async Task<int> VMSnapshotAsync(int vmId, string name)
         {
             return (await RequestAsync<VMSnapshotResponseModel>("vm", "snapshot", new VMSnapshotRequestModel(vmId, name))).image_id;

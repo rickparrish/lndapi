@@ -10,6 +10,11 @@ namespace lndapi
 {
     public partial class LNDynamic
     {
+        /// <summary>
+        /// Re-image a VM (i.e. re-install from a new image)
+        /// </summary>
+        /// <param name="vmId">The id of the VM to re-image</param>
+        /// <param name="imageId">The id of the image to re-image with</param>
         public async Task VMReImageAsync(int vmId, int imageId)
         {
             await RequestAsync<BaseResponseModel>("vm", "reimage", new VMReImageRequestModel(vmId, imageId));

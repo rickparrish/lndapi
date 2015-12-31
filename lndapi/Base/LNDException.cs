@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace lndapi
 {
+    /// <summary>
+    /// Custom exception thrown when API result does not contain success=yes
+    /// </summary>
     public class LNDException : Exception
     {
         public LNDException(string message) : base(message)

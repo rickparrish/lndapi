@@ -10,6 +10,10 @@ namespace lndapi
 {
     public partial class LNDynamic
     {
+        /// <summary>
+        /// Retrieve the list of plans
+        /// </summary>
+        /// <returns>The list of plans</returns>
         public async Task<PlanListPlans[]> PlanListAsync()
         {
             return (await RequestAsync<PlanListResponseModel>("plan", "list", new BaseRequestModel())).plans;

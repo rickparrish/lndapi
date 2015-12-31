@@ -10,6 +10,10 @@ namespace lndapi
 {
     public partial class LNDynamic
     {
+        /// <summary>
+        /// Reboot a VM
+        /// </summary>
+        /// <param name="vmId">The id of the VM to reboot</param>
         public async Task VMRebootAsync(int vmId)
         {
             await RequestAsync<BaseResponseModel>("vm", "reboot", new VMBaseRequestModel(vmId));

@@ -13,22 +13,29 @@ namespace lndapi
 {
     public partial class LNDynamic
     {
-        public async Task ImageRetrieveAsync(int imageId, string filename, EventHandler<ImageRetrieveProgressChangedEventArgs> eventHandler)
+        /// <summary>
+        /// Retrieve an image (i.e. download an image to your computer)
+        /// </summary>
+        /// <param name="imageId">The id of the image to download</param>
+        /// <param name="filename">The full path and filename to save the downloaded image as</param>
+        /// <param name="progressEventHandler">The event handler to call with progress updates</param>
+        public async Task ImageRetrieveAsync(int imageId, string filename, EventHandler<ImageRetrieveProgressChangedEventArgs> progressEventHandler)
         {
-            //TODO var Details = await this.ImageDetailsAsync(1234);
+            var ImageDetails = await this.ImageDetailsAsync(imageId);
 
             using (WebClient WC = new WebClient())
             {
                 WC.Proxy = null;
-                if (eventHandler != null)
+                if (progressEventHandler != null)
                 {
                     WC.DownloadProgressChanged += (s, e) =>
                     {
-                        //TODO eventHandler(s, new ImageRetrieveProgressChangedEventArgs(e.BytesReceived, e.TotalBytesToReceive > 0 ? e.TotalBytesToReceive : Details.details.size));
+                        progressEventHandler(s, new ImageRetrieveProgressChangedEventArgs(e.BytesReceived, e.TotalBytesToReceive > 0 ? e.TotalBytesToReceive : ImageDetails.size));
                     };
                 }
 
-                // TODO Handle in base Request method (maybe it can handle separately the image/retrieve call)
+                // TODO This should be moved to the base Request method and an IF could handle image/retrieve separately (with this code)
+                //      Maybe a new RequestFile method could be added instead
                 Uri RetrieveImageUrl = new Uri($"{BASE_URL_LEGACY}?category=image&action=retrieve&image_id={imageId}&api_id={_APIId}&api_key={_APIKey}");
                 await WC.DownloadFileTaskAsync(RetrieveImageUrl, filename);
 

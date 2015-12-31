@@ -10,6 +10,11 @@ namespace lndapi
 {
     public partial class LNDynamic
     {
+        /// <summary>
+        /// Retrieve the info for a VM
+        /// </summary>
+        /// <param name="vmId">The id of the VM to retrieve info for</param>
+        /// <returns>The info for the requested VM</returns>
         public async Task<VMInfoInfo> VMInfoAsync(int vmId)
         {
             return (await RequestAsync<VMInfoResponseModel>("vm", "info", new VMBaseRequestModel(vmId))).info;

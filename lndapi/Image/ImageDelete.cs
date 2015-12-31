@@ -10,7 +10,10 @@ namespace lndapi
 {
     public partial class LNDynamic
     {
-        // NOTE: Returns success=yes whether the image existed or not
+        /// <summary>
+        /// Delete an image
+        /// </summary>
+        /// <param name="imageId">The id of the image to delete</param>
         public async Task ImageDeleteAsync(int imageId)
         {
             await RequestAsync<BaseResponseModel>("image", "delete", new ImageBaseRequestModel(imageId));

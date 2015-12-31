@@ -10,6 +10,10 @@ namespace lndapi
 {
     public partial class LNDynamic
     {
+        /// <summary>
+        /// Retrieve the list of startup scripts
+        /// </summary>
+        /// <returns>The list of startup scripts</returns>
         public async Task<ScriptListScripts[]> ScriptListAsync()
         {
             return (await RequestAsync<ScriptListResponseModel>("script", "list", new BaseRequestModel())).scripts;

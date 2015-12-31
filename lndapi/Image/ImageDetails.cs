@@ -10,6 +10,11 @@ namespace lndapi
 {
     public partial class LNDynamic
     {
+        /// <summary>
+        /// Retrieve the details for an image
+        /// </summary>
+        /// <param name="imageId">The id of the image to retrieve details for</param>
+        /// <returns>The details for the requested image</returns>
         public async Task<ImageDetailsDetails> ImageDetailsAsync(int imageId)
         {
             return (await RequestAsync<ImageDetailsResponseModel>("image", "details", new ImageBaseRequestModel(imageId))).details;

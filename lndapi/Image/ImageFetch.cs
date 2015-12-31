@@ -11,6 +11,16 @@ namespace lndapi
 {
     public partial class LNDynamic
     {
+        /// <summary>
+        /// Fetch an image from an external source (i.e. upload an image from an external source to your account)
+        /// </summary>
+        /// <param name="region">The region to store the image</param>
+        /// <param name="name">The name to give the image</param>
+        /// <param name="location">The full http:// url to the image</param>
+        /// <param name="format">The format of the image ('iso' or 'qcow2)</param>
+        /// <param name="virtio">Use virtio driver ('yes' or 'no').  Provides higher disk and network throughput, but not supported by all operating systems by default (e.g. Windows)</param>
+        /// <returns>The id of the newly created image</returns>
+        /// <remarks>The method will return immediately, but it will take time to actually fetch the image.  Use ImageDetails to check on the status.</remarks>
         public async Task<int> ImageFetchAsync(string region, string name, string location, string format, string virtio)
         {
             return (await RequestAsync<ImageFetchResponseModel>("image", "fetch", new ImageFetchRequestModel(region, name, location, format, virtio))).image_id;

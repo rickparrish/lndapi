@@ -10,6 +10,12 @@ namespace lndapi
 {
     public partial class LNDynamic
     {
+        /// <summary>
+        /// Resize a VM (i.e. change to another plan)
+        /// </summary>
+        /// <param name="vmId">The id of the VM to resize</param>
+        /// <param name="planId">The id of the plan to resize to</param>
+        /// <remarks>VMs with local storage cannot move to a new plan with a smaller amount of HD space.  VMs installed from ISO cannot be resized either.  Both scenarios will appear to succeed, but no change will take place.</remarks>
         public async Task VMResizeAsync(int vmId, int planId)
         {
             // TODO If local storage is in use, can't go down in disk size

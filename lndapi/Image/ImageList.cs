@@ -10,11 +10,20 @@ namespace lndapi
 {
     public partial class LNDynamic
     {
+        /// <summary>
+        /// Retrieve the list of images in all regions
+        /// </summary>
+        /// <returns>The list of images in all regions</returns>
         public async Task<ImageListImages[]> ImageListAsync()
         {
             return await ImageListAsync(null);
         }
 
+        /// <summary>
+        /// Retrieve the list of images in one region
+        /// </summary>
+        /// <param name="region">The region to retrieve the list of images from</param>
+        /// <returns>The list of images in the requested region</returns>
         public async Task<ImageListImages[]> ImageListAsync(string region)
         {
             return (await RequestAsync<ImageListResponseModel>("image", "list", new ImageListRequestModel(region))).images;

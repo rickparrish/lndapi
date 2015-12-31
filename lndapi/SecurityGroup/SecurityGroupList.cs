@@ -10,6 +10,10 @@ namespace lndapi
 {
     public partial class LNDynamic
     {
+        /// <summary>
+        /// Retrieve the list of security groups
+        /// </summary>
+        /// <returns>The list of security groups</returns>
         public async Task<SecurityGroupListSecurityGroups[]> SecurityGroupListAsync()
         {
             return (await RequestAsync<SecurityGroupListResponseModel>("securitygroup", "list", new BaseRequestModel())).securitygroups;

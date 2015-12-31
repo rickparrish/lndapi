@@ -11,6 +11,10 @@ namespace lndapi
 {
     public partial class LNDynamic
     {
+        /// <summary>
+        /// Retrieve the list of regions
+        /// </summary>
+        /// <returns>The list of regions</returns>
         public async Task<Dictionary<string, string>> RegionListAsync()
         {
             return (await RequestAsync<RegionListResponseModel>("region", "list", new BaseRequestModel())).regions;
