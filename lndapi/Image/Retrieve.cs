@@ -23,7 +23,7 @@ namespace lndapi
         {
             var ImageDetails = await this.ImageDetailsAsync(imageId);
 
-            using (WebClient WC = new WebClient())
+            using (NoKeepAlivesWebClient WC = new NoKeepAlivesWebClient())
             {
                 WC.Proxy = null;
                 if (progressEventHandler != null)

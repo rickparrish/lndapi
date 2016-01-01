@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\Base.cs" />
+    <Compile Include="Base\NoKeepAlivesWebClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Image\Base.cs" />
     <Compile Include="Floating\List.cs" />
     <Compile Include="LoadBalancer\Delete.cs" />

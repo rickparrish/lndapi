@@ -36,7 +36,7 @@ namespace lndapi
 
         private async Task<T> RequestAsync<T>(string category, string action, BaseRequestModel requestModel)
         {
-            using (WebClient WC = new WebClient())
+            using (NoKeepAlivesWebClient WC = new NoKeepAlivesWebClient())
             {
                 WC.Proxy = null;
 
