@@ -6,6 +6,8 @@ See https://dynamic.lunanode.com/info.php?r=2427 for more info (aff. link)
 
 Their service includes an API that can be used to automate parts of the control panel, which is pretty easy to use, but lndapi makes it even easier!
 
+For a real-world example of its usage, check out <a href="https://github.com/rickparrish/lndbackup">lndbackup</a>
+
 <strong>This is still in the early stages of development, so while I've tested every method as I've added them, there could still be bugs and edge cases to work out.</strong>
 
 # Supported Actions
