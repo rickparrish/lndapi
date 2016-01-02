@@ -8,7 +8,7 @@ Their service includes an API that can be used to automate parts of the control 
 
 For a real-world example of its usage, check out <a href="https://github.com/rickparrish/lndbackup">lndbackup</a>
 
-<strong>This is still in the early stages of development, so while I've tested every method as I've added them, there could still be bugs and edge cases to work out.</strong>
+<strong>I test every method as I add it, but there could still be edge cases or bugs that I've missed, so throwing a breakpoint on the call to <em>WC.UploadValuesTaskAsync</em> to double check the values in <em>requestModel</em> wouldn't be a bad idea!</strong>
 
 # Supported Actions
 
