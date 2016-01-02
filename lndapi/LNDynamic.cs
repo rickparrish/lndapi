@@ -58,11 +58,11 @@ namespace lndapi
                 Uri RequestUrl = new Uri(DYNAMIC_URL.Replace("{CATEGORY}", category).Replace("{ACTION}", action));
                 string ResponseText = Encoding.UTF8.GetString(await WC.UploadValuesTaskAsync(RequestUrl, "POST", RequestData));
 
-                if (Debugger.IsAttached)
-                {
-                    string LogFilename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "lndapi.log");
-                    File.AppendAllText(LogFilename, $"{category}/{action}{Environment.NewLine}{ModelData}{Environment.NewLine}{ResponseText}{Environment.NewLine}{Environment.NewLine}");
-                }
+                //if (Debugger.IsAttached)
+                //{
+                //    string LogFilename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "lndapi.log");
+                //    File.AppendAllText(LogFilename, $"{category}/{action}{Environment.NewLine}{ModelData}{Environment.NewLine}{ResponseText}{Environment.NewLine}{Environment.NewLine}");
+                //}
 
                 BaseResponseModel BRM = JsonConvert.DeserializeObject<BaseResponseModel>(ResponseText);
                 if (BRM.success == "yes")
