@@ -45,14 +45,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\Base.cs" />
+    <Compile Include="Base\LNDImageKilledException.cs" />
     <Compile Include="Base\NoKeepAlivesWebClient.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Image\Base.cs" />
     <Compile Include="Floating\List.cs" />
+    <Compile Include="Image\ReplicateAndWait.cs" />
     <Compile Include="LoadBalancer\Delete.cs" />
     <Compile Include="LoadBalancer\List.cs" />
     <Compile Include="Network\Delete.cs" />
+    <Compile Include="VM\SnapshotAndWait.cs" />
+    <Compile Include="Volume\Base.cs" />
+    <Compile Include="Volume\Delete.cs" />
     <Compile Include="Volume\List.cs" />
     <Compile Include="Network\List.cs" />
     <Compile Include="DNS\List.cs" />

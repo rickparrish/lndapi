@@ -19,4 +19,54 @@ namespace lndapi.Image
             this.image_id = imageId;
         }
     }
+
+    public class ImageQueuedEventArgs : EventArgs
+    {
+        public long ImageId { get; set; }
+
+        public ImageQueuedEventArgs(int imageId)
+        {
+            this.ImageId = imageId;
+        }
+    }
+
+    public class ImageRetrieveProgressChangedEventArgs : EventArgs
+    {
+        public long BytesReceived { get; set; }
+        public long TotalBytesToReceive { get; set; }
+        public double ProgressPercentage { get; set; }
+
+        public ImageRetrieveProgressChangedEventArgs(long bytesReceived, long totalBytesToReceive)
+        {
+            this.BytesReceived = bytesReceived;
+            this.TotalBytesToReceive = totalBytesToReceive;
+            this.ProgressPercentage = (double)this.BytesReceived / (double)this.TotalBytesToReceive;
+        }
+    }
+
+    public class ImageRetryingEventArgs : EventArgs
+    {
+        public long ImageId { get; set; }
+        public int MaxRetries { get; set; }
+        public int RetryNumber { get; set; }
+
+        public ImageRetryingEventArgs(int imageId, int retryNumber, int maxRetries)
+        {
+            this.ImageId = imageId;
+            this.RetryNumber = retryNumber;
+            this.MaxRetries = maxRetries;
+        }
+    }
+
+    public class ImageWaitingEventArgs : EventArgs
+    {
+        public long ImageId { get; set; }
+        public string Status { get; set; }
+
+        public ImageWaitingEventArgs(int imageId, string status)
+        {
+            this.ImageId = imageId;
+            this.Status = status;
+        }
+    }
 }

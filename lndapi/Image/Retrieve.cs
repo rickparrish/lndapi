@@ -73,20 +73,3 @@ namespace lndapi
         }
     }
 }
-
-namespace lndapi.Image
-{
-    public class ImageRetrieveProgressChangedEventArgs : EventArgs
-    {
-        public long BytesReceived { get; set; }
-        public long TotalBytesToReceive { get; set; }
-        public double ProgressPercentage { get; set; }
-
-        public ImageRetrieveProgressChangedEventArgs(long bytesReceived, long totalBytesToReceive)
-        {
-            this.BytesReceived = bytesReceived;
-            this.TotalBytesToReceive = totalBytesToReceive;
-            this.ProgressPercentage = (double)this.BytesReceived / (double)this.TotalBytesToReceive;
-        }
-    }
-}

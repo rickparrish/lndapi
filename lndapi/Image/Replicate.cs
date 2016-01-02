@@ -16,7 +16,7 @@ namespace lndapi
         /// <param name="imageId">The id of the image to replicate</param>
         /// <param name="region">The region to replicate the image to</param>
         /// <returns>The id of the newly created image</returns>
-        /// <remarks>The method will return immediately, but it will take time to actually replicate the image.  Use ImageDetails to check on the status.</remarks>
+        /// <remarks>The method will return immediately, but it will take time to actually replicate the image.  Use ImageReplicateAndWait if you want to wait for the image to be active before the method returns.</remarks>
         public async Task<int> ImageReplicateAsync(int imageId, string region)
         {
             return (await RequestAsync<ImageReplicateResponseModel>("image", "replicate", new ImageReplicateRequestModel(imageId, region))).image_id;
