@@ -12,7 +12,7 @@ For a real-world example of its usage, check out <a href="https://github.com/ric
 
 # Supported Actions
 
-<strong>vm</strong>: start, stop, reboot, info, delete, reimage, resize, rescue, vnc, snapshot, list<br />
+<strong>vm</strong>: start, stop, reboot, info, delete, reimage, resize, rescue, vnc, create, snapshot, list<br />
 <strong>dns</strong>: list<br />
 <strong>image</strong>: list, delete, details, replicate, fetch, retrieve<br />
 <strong>volume</strong>: list, delete<br />
@@ -27,7 +27,7 @@ startup <strong>script</strong>: list<br />
 
 # Unsupported Actions (for now)
 
-<strong>vm</strong>: diskswap, floatingip-add, floatingip-delete, create<br />
+<strong>vm</strong>: diskswap, floatingip-add, floatingip-delete<br />
 <strong>dns</strong>: set, zone-list, zone-add, zone-remove, record-list, record-add, record-remove, dyn-list, dyn-add, dyn-update, dyn-remove<br />
 <strong>volume</strong>: create, attach, detach, info<br />
 <strong>floating</strong> ip: add, delete<br />
