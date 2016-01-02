@@ -49,24 +49,30 @@ namespace lndapi.Image
         public long ImageId { get; set; }
         public int MaxRetries { get; set; }
         public int RetryNumber { get; set; }
+        public int WaitSeconds { get; set; }
+        public int NewImageId { get; set; }
 
-        public ImageRetryingEventArgs(int imageId, int retryNumber, int maxRetries)
+        public ImageRetryingEventArgs(int imageId, int retryNumber, int maxRetries, int waitSeconds)
         {
             this.ImageId = imageId;
             this.RetryNumber = retryNumber;
             this.MaxRetries = maxRetries;
+            this.WaitSeconds = waitSeconds;
+            this.NewImageId = -1;
         }
     }
 
-    public class ImageWaitingEventArgs : EventArgs
+    public class ImageStatusEventArgs : EventArgs
     {
         public long ImageId { get; set; }
         public string Status { get; set; }
+        public int WaitSeconds { get; set; }
 
-        public ImageWaitingEventArgs(int imageId, string status)
+        public ImageStatusEventArgs(int imageId, string status, int waitSeconds)
         {
             this.ImageId = imageId;
             this.Status = status;
+            this.WaitSeconds = waitSeconds;
         }
     }
 }

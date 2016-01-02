@@ -52,6 +52,7 @@
     <Compile Include="Image\Base.cs" />
     <Compile Include="Floating\List.cs" />
     <Compile Include="Image\ReplicateAndWait.cs" />
+    <Compile Include="Image\WaitForActive.cs" />
     <Compile Include="LoadBalancer\Delete.cs" />
     <Compile Include="LoadBalancer\List.cs" />
     <Compile Include="Network\Delete.cs" />
