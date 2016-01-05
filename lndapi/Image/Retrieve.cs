@@ -1,6 +1,5 @@
 ﻿using lndapi.Base;
 using lndapi.Image;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace lndapi
 {
@@ -47,7 +47,7 @@ namespace lndapi
                         if (FI.Length < 1024)
                         {
                             string FileContents = File.ReadAllText(filename);
-                            BaseResponseModel BRM = JsonConvert.DeserializeObject<BaseResponseModel>(FileContents);
+                            BaseResponseModel BRM = (new JavaScriptSerializer()).Deserialize<BaseResponseModel>(FileContents);
                             if (BRM.success != "yes")
                             {
                                 throw new LNDException(BRM.error);

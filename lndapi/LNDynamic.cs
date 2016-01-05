@@ -1,5 +1,4 @@
 ﻿using lndapi.Base;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -10,6 +9,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 // TODO Test everything with a restricted api key
 // TODO VM DiskSwawp -- what is it?
@@ -42,9 +42,11 @@ namespace lndapi
             {
                 WC.Proxy = null;
 
+                var Serializer = new JavaScriptSerializer();
+
                 requestModel.api_id = _APIId;
                 requestModel.api_partialkey = _APIKey.Substring(0, 64);
-                string ModelData = JsonConvert.SerializeObject(requestModel);
+                string ModelData = Serializer.Serialize(requestModel);
 
                 int Nonce = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds; // https://dzone.com/articles/get-unix-epoch-time-one-line-c
                 string Signature = hash_hmac("sha512", $"{category}/{action}/|{ModelData}|{Nonce.ToString()}", _APIKey);
@@ -64,10 +66,10 @@ namespace lndapi
                 //    File.AppendAllText(LogFilename, $"{category}/{action}{Environment.NewLine}{ModelData}{Environment.NewLine}{ResponseText}{Environment.NewLine}{Environment.NewLine}");
                 //}
 
-                BaseResponseModel BRM = JsonConvert.DeserializeObject<BaseResponseModel>(ResponseText);
+                BaseResponseModel BRM = Serializer.Deserialize<BaseResponseModel>(ResponseText);
                 if (BRM.success == "yes")
                 {
-                    return JsonConvert.DeserializeObject<T>(ResponseText);
+                    return Serializer.Deserialize<T>(ResponseText);
                 }
                 else
                 {
