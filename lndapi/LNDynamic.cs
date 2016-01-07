@@ -11,12 +11,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 
-// TODO Test everything with a restricted api key
 // TODO VM DiskSwawp -- what is it?
 //      {"success":"no","error":"the VM must be stopped before disk swap can proceed"}
 // TODO VM floatingip-add 
 // TODO VM floatingip-delete
-// TODO VM create
 
 namespace lndapi
 {
@@ -49,7 +47,7 @@ namespace lndapi
                 string ModelData = Serializer.Serialize(requestModel);
 
                 int Nonce = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds; // https://dzone.com/articles/get-unix-epoch-time-one-line-c
-                string Signature = hash_hmac("sha512", $"{category}/{action}/|{ModelData}|{Nonce.ToString()}", _APIKey);
+                string Signature = hash_hmac_sha512($"{category}/{action}/|{ModelData}|{Nonce.ToString()}", _APIKey);
                 NameValueCollection RequestData = new NameValueCollection()
                 {
                     { "req", ModelData },
@@ -79,9 +77,8 @@ namespace lndapi
         }
 
         // http://stackoverflow.com/a/12804391/342378
-        private string hash_hmac(string algo, string data, string key)
+        private string hash_hmac_sha512(string data, string key)
         {
-            // TODO algo is ignored
             var keyByte = Encoding.UTF8.GetBytes(key);
             using (var hmacsha512 = new HMACSHA512(keyByte))
             {
@@ -106,17 +103,17 @@ namespace lndapi
             {
                 if (disposing)
                 {
-                    // TODO: dispose managed state (managed objects).
+                    // dispose managed state (managed objects).
                 }
 
-                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-                // TODO: set large fields to null.
+                // free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // set large fields to null.
 
                 disposedValue = true;
             }
         }
 
-        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+        // override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
         // ~LNDynamic() {
         //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
         //   Dispose(false);
@@ -127,7 +124,7 @@ namespace lndapi
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(true);
-            // TODO: uncomment the following line if the finalizer is overridden above.
+            // uncomment the following line if the finalizer is overridden above.
             // GC.SuppressFinalize(this);
         }
         #endregion
