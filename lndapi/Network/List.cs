@@ -16,7 +16,7 @@ namespace lndapi
         /// <returns>The list of virtual networks in all regions</returns>
         public async Task<NetworkListNetworks[]> NetworkListAsync()
         {
-            return await NetworkListAsync(null);
+            return (await RequestAsync<NetworkListResponseModel>("network", "list", new BaseRequestModel())).networks;
         }
 
         /// <summary>

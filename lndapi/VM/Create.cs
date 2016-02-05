@@ -51,6 +51,7 @@ namespace lndapi.VM
         public int? key_id { get; set; }
         public string set_password { get; set; }
 
+        //TODOX ImageList and NetworkList broke when using null values all of a sudden, confirm whether these work or not
         public VMCreateRequestModel(string hostname, int planId, int imageId, VMPreferNode preferNode, string region, string ip, int? networkId, int[] securityGroupIds, int[] scriptIds, int? volumeId, bool? virtio, int? keyId, bool? setRandomPassword)
         {
             this.hostname = hostname;
