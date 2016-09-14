@@ -133,7 +133,7 @@ namespace lndapi.VM
 
     public class VMInfoExtra
     {
-        public int vm_id { get; set; }
+        public string vm_id { get; set; }
         public string name { get; set; }
         public int plan_id { get; set; }
         public string hostname { get; set; }

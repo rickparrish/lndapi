@@ -38,6 +38,9 @@ namespace lndapi
                 Uri RetrieveImageUrl = new Uri($"{BASE_URL_LEGACY}?category=image&action=retrieve&image_id={imageId}&api_id={_APIId}&api_key={_APIKey}");
                 await WC.DownloadFileTaskAsync(RetrieveImageUrl, filename);
 
+                // TODOX Final progressEventHandler() call would be good, but how to know how many bytes were received/expected?
+                //       Without final call program displays - Downloaded 28,180,193,280 of 28,182,839,296 bytes (99.99 %)...
+
                 // Check for JSON indicating a failure
                 try
                 {
